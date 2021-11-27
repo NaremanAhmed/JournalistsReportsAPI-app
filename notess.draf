@@ -1,0 +1,10 @@
+npm init -y
+npm i mongodb 
+npm i mongoose
+npm i nodemon -g
+npm i validator
+npm i bcrypt 
+npm i jsonwebtoken
+npm i express
+npm i multer
+npm i bcryptjs
