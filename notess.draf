@@ -8,3 +8,7 @@ npm i jsonwebtoken
 npm i express
 npm i multer
 npm i bcryptjs
+-------------------
+git init
+npm install dotenv
+npm cors

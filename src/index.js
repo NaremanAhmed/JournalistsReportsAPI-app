@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+require('dotenv').config()
+const port = process.env.PORT
+const cors = require('cors')
 const journalistRouter = require('./routers/journalist')
 const reportsRouter = require('./routers/reports')
 
@@ -8,6 +10,7 @@ const reportsRouter = require('./routers/reports')
 require('./db/mongoose')
 app.use(express.json())
 
+app.use(cors())
 app.use(journalistRouter)
 app.use(reportsRouter)
 
