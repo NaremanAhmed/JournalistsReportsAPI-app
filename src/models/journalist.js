@@ -24,7 +24,7 @@ const journalistSchema = new mongoose.Schema({
         trim:true,
         validate(value){
             if(!validator.isMobilePhone(value ,['ar-EG'])){
-                throw new Error('Please Enter a Valid Mobile...!')
+                throw new Error('Please Enter a Valid Mobile in egypt...!')
             }
         }
     },
@@ -70,7 +70,7 @@ journalistSchema.virtual('reports',{
 ///hash password
 journalistSchema.pre('save',async function(next){
     const journalist = this
-    console.log(journalist)
+    // console.log(journalist)
     if (journalist.isModified('password')){
         journalist.password =await bcrypt.hash(journalist.password,8)
     }
@@ -95,7 +95,7 @@ journalistSchema.statics.findByCredentials = async (email,password) =>{
 journalistSchema.methods.genrateToken = async function(){
     const journalist = this
     // console.log(journalist)
-    const token = jwt.sign({_id:journalist._id.toString()},token,process.env.JWT_SECRET)
+    const token = jwt.sign({_id:journalist._id.toString()},process.env.JWT_SECRET)
     journalist.tokens = journalist.tokens.concat({token})
     await journalist.save()
     return token
