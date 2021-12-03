@@ -95,7 +95,7 @@ journalistSchema.statics.findByCredentials = async (email,password) =>{
 journalistSchema.methods.genrateToken = async function(){
     const journalist = this
     // console.log(journalist)
-    const token = jwt.sign({_id:journalist._id.toString()},'newspaper-app')
+    const token = jwt.sign({_id:journalist._id.toString()},token,process.env.JWT_SECRET)
     journalist.tokens = journalist.tokens.concat({token})
     await journalist.save()
     return token
